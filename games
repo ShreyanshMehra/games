@@ -32,10 +32,56 @@ def rock_paper_scissor():
         print('YOU WON!!')
     else:
         print('YOU LOST')
+def blackjack():
+    while True:
+        menu= int(input('''BLACK JACK
+1.Rules of the game
+2.Play the game
+3.Veiw scores
+4.Exit\n'''))
+        if menu == 1:
+            print('''RULES:
+Each participant attempts to get a count as close to 21 as possible, without going over 21.
+Value of Face cards are 10 and any other card is its pip value.
+        ''')
+        if menu == 2:
+            player_name=input('NAME:')
+            card_value={'king':10,'queen':10,'jack':10,'ace':1,'TWO':2,'THREE':3,'FOUR':4,'FIVE':5,'SIX':6,'SEVEN':7,'EIGHT':8,'NINE':9,'TEN':10}
+            dict={}
+            count=0
+            list=[]
+            for key in card_value:
+                list.append(key)
+            while True:
+                choice = input('Pick a card (P) or Save the score(S)')
+                if choice == 'P' or 'p':
+                    card = random.choice(list)
+                    print('YOUR CARD IS:',card)
+                    count = count + card_value[card]
+                    print('YOUR CURRENT SCORE IS:',count)
+                    if count > 21:
+                        print('YOU LOST')
+                        break
+                    elif count == 21:
+                        print('YOU WON')
+                        dict[player_name]=count
+                        break
+                elif choice == 'S' or 's':
+                    dict[player_name]=count
+                    print('YOUR CURRENT SCORE',count,'is saved')
+                    break
+        if menu == 3:
+            print('\n\nNAME\t\tScore')
+            for k in dict:
+                print(k,'\t\t',dict[k])
+        if menu == 4:
+            break
+
 while True:
     print('''1.Guess the number.
 2.ROCK PAPER SCISSORS
-3.EXIT
+3.Black jack
+4.Exit
             ''')
     choice = int(input('CHOOSE A GAME'))
     if choice == 1:
@@ -44,4 +90,6 @@ while True:
     elif choice == 2:
         rock_paper_scissor()
     elif choice == 3:
+        blackjack()
+    elif choice == 4:
         break
