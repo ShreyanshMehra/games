@@ -1,0 +1,47 @@
+import random
+def guessing_game(x):
+    while True:
+        print('Guess the no. from 1 to 10')
+        n = int(input('Guess the no.'))
+        if n < x:
+            print('The number is higher')
+        elif n > x:
+            print('The number is lower')
+        elif n == x:
+            print('You guessed the number!!!')
+            break
+def rock_paper_scissor():
+    score_comp=0
+    score_player=0
+    i=0
+    while i<3:
+        print('ROCK(r) PAPER(p) SCISSORS(s) SHOOT!!')
+        player = input('YOU:')
+        l=['r','p','s']
+        computer=random.choice(l)
+        print('AI:',computer)
+        if (player == 'r' and computer=='s') or (player == 's' and computer =='p') or (player =='p' and computer =='r'):
+            score_player+=1
+            i+=1
+        elif player == computer:
+            continue
+        else:
+            score_comp+=1
+            i+=1
+    if score_player >= 2:
+        print('YOU WON!!')
+    else:
+        print('YOU LOST')
+while True:
+    print('''1.Guess the number.
+2.ROCK PAPER SCISSORS
+3.EXIT
+            ''')
+    choice = int(input('CHOOSE A GAME'))
+    if choice == 1:
+        x = random.randrange(1,10)
+        guessing_game(x)
+    elif choice == 2:
+        rock_paper_scissor()
+    elif choice == 3:
+        break
